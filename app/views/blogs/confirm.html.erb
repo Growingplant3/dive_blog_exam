@@ -1,11 +1,13 @@
 <h2>以下の内容で、ブログ記事を確定する。</h2>
-<%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :body %>
-  <%= form.hidden_field :author %>
-  <p>タイトル：<%= @blog.title %></p>
-  <p>内容：<%= @blog.body %></p>
-  <p>編集者：<%= @blog.author %></p>
-  <%= form.submit "登録する" %>
-  <%= form.submit "戻る", name: 'back' %>
+<div class="blog-form"> 
+  <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
+    <%= form.hidden_field :title %>
+    <%= form.hidden_field :body %>
+    <%= form.hidden_field :author %>
+    <p>タイトル：<%= @blog.title %></p>
+    <p>内容：<%= @blog.body %></p>
+    <p>編集者：<%= @blog.author %></p>
+    <%= form.submit "登録する" %>
+    <%= form.submit "戻る", name: 'back' %>
 <% end %>
+</div>

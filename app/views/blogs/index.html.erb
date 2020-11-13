@@ -2,7 +2,7 @@
 <p><%= notice %></p>
 <table>
   <% @blogs.each do |blog| %>
-    <div>
+    <div class="blog-form">
       <ul>
         <li>タイトル</li>
         <h2><%= link_to "#{blog[1]}", blog_path("#{blog[0]}") %></h2>

@@ -1,5 +1,5 @@
 <h1>ブログ記事を参照中</h1>
-<div>
+<div class="blog-form">
   <h2><%= @blog.title %></h2>
 
   <p>
@@ -17,9 +17,9 @@
   <p>
     編集日：<strong><%= @blog.updated_at %></strong>
   </p>
-</div>
 
-<button><%= link_to "編集する", edit_blog_path(@blog.id) %></button>
-<button><%= link_to "削除する", blog_path(@blog.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></button>
-<br>
-<%= link_to "一覧表示に戻る", blogs_path %>
+  <button><%= link_to "編集する", edit_blog_path(@blog.id) %></button>
+  <button><%= link_to "削除する", blog_path(@blog.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></button>
+  <br>
+  <%= link_to "一覧表示に戻る", blogs_path %>
+</div>
