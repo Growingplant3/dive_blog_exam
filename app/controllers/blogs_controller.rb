@@ -13,7 +13,7 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
     if @blog.valid?
       @blog.save
-      move_root('ブログ記事を登録しました。')
+      move_root("ブログ記事を登録しました。")
     else
       render :new
     end
@@ -47,7 +47,7 @@ class BlogsController < ApplicationController
     params.require(:blog).permit(:title, :body, :author)
   end
 
-  def move_root(notice_message)
+  def move_root(notice_message = nil)
     redirect_to blogs_path, { notice: notice_message }
   end
 end
