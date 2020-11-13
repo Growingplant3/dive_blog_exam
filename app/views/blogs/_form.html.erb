@@ -1,18 +1,31 @@
+<% if @blog.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @blog.errors.count %>件のエラーがあります。</h2>
+    <ul>
+      <% @blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with(model: @blog, local: true, url: choice_root) do |f| %>
   <div>
-    </ul>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </ul>
     <ul>
-      <%= f.label :body %>
-      <%= f.text_area :body, size: "100", maxlength: 140 %>
+      <li>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </li>
+      <li>
+        <%= f.label :body %>
+        <%= f.text_area :body, size: "100", maxlength: 140 %>
+      </li>
+      <li>
+        <%= f.label :author %>
+        <%= f.text_field :author %>
+      </li>
     </ul>
-    <ul>
-      <%= f.label :author %>
-      <%= f.text_field :author %>
-    </ul>
-    <% if action_name == "new" || action_name == "create" %>
+    <% if action_name == "new" || action_name == "create" || action_name == "confirm" %>
       <%= f.submit "登録する" %>
     <% elsif action_name == "edit" %>
       <%= f.submit "編集する" %>
