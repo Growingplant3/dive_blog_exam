@@ -1,0 +1,25 @@
+<h1>ブログ内容を参照中</h1>
+<div>
+  <h2><%= @blog.title %></h2>
+
+  <p>
+    <%= @blog.body %>
+  </p>
+
+  <p>
+    <%= @blog.author %>
+  </p>
+
+  <p>
+    執筆日：<strong><%= @blog.created_at %></strong>
+  </p>
+
+  <p>
+    編集日：<strong><%= @blog.updated_at %></strong>
+  </p>
+</div>
+
+<button><%= link_to "編集する", edit_blog_path(@blog.id) %></button>
+<button>削除する</button>
+<br>
+<%= link_to "一覧表示に戻る", blogs_path %>

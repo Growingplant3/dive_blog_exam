@@ -1,0 +1,14 @@
+<h1>ブログ一覧</h1>
+<table>
+  <% @blogs.each do |blog| %>
+    <div>
+      <ul>
+        <li>タイトル</li>
+        <h2><%= link_to "#{blog[1]}", blog_path("#{blog[0]}") %></h2>
+        <li>更新日</li>
+        <li><%= blog[2] %></li>
+      </ul>
+    </div>
+  <% end %>
+</table>
+<%= link_to "ブログを新規作成する", new_blog_path %>

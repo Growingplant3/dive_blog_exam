@@ -1,0 +1,23 @@
+<%= form_with(model: @blog, local: true,url: choice_root) do |f| %>
+  <div>
+    </ul>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </ul>
+    <ul>
+      <%= f.label :body %>
+      <%= f.text_area :body, size: "100", maxlength: 140 %>
+    </ul>
+    <ul>
+      <%= f.label :author %>
+      <%= f.text_field :author %>
+    </ul>
+    <% if action_name == "new" %>
+      <%= f.submit "登録する" %>
+    <% elsif action_name == "edit" %>
+      <%= f.submit "編集する" %>
+    <% end %>
+    <br>
+    <%= link_to "一覧表示に戻る", blogs_path %>
+  </div>
+<% end %>
