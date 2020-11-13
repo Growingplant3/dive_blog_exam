@@ -11,11 +11,15 @@ class BlogsController < ApplicationController
 
   def create
     @blog = Blog.new(blog_params)
-    if @blog.valid?
-      @blog.save
-      move_root("ブログ記事を登録しました。")
-    else
+    if params[:back]
       render :new
+    else
+      if @blog.valid?
+        @blog.save
+        move_root("ブログ記事を登録しました。")
+      else
+        render :new
+      end
     end
   end
 
@@ -36,6 +40,8 @@ class BlogsController < ApplicationController
   end
 
   def confirm
+    @blog = Blog.new(blog_params)
+    render :new unless @blog.valid?
   end
 
   private

@@ -12,7 +12,7 @@
       <%= f.label :author %>
       <%= f.text_field :author %>
     </ul>
-    <% if action_name == "new" %>
+    <% if action_name == "new" || action_name == "create" %>
       <%= f.submit "登録する" %>
     <% elsif action_name == "edit" %>
       <%= f.submit "編集する" %>
