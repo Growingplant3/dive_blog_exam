@@ -11,8 +11,7 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
     if @blog.valid?
       @blog.save
-      flash[:notice] = 'ブログ記事を登録しました！'
-      redirect_to blogs_path
+      redirect_to blogs_path, { notice: 'ブログ記事を登録しました！' }
     else
       render :new
     end
@@ -28,7 +27,7 @@ class BlogsController < ApplicationController
 
   def update
     @blog = Blog.update(blog_params)
-    redirect_to blogs_path,{ notice: "ブログを編集しました！" }
+    redirect_to blogs_path, { notice: "ブログを編集しました！" }
   end
 
   def destroy
