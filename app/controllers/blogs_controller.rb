@@ -1,4 +1,6 @@
 class BlogsController < ApplicationController
+  before_action :set_blog, only: %i[show edit update destroy]
+
   def index
     @blogs = Blog.pluck(:id, :title, :updated_at)
   end
@@ -11,26 +13,26 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
     if @blog.valid?
       @blog.save
-      redirect_to blogs_path, { notice: 'ブログ記事を登録しました！' }
+      move_root('ブログ記事を登録しました。')
     else
       render :new
     end
   end
 
   def show
-    @blog = Blog.find_by(id: params[:id])
   end
 
   def edit
-    @blog = Blog.find_by(id: params[:id])
   end
 
   def update
-    @blog = Blog.update(blog_params)
-    redirect_to blogs_path, { notice: "ブログを編集しました！" }
+    @blog.update(blog_params)
+    move_root("ブログ記事を編集しました。")
   end
 
   def destroy
+    @blog.destroy
+    move_root("ブログ記事を削除しました。")
   end
 
   def confirm
@@ -38,9 +40,14 @@ class BlogsController < ApplicationController
 
   private
   def set_blog
+    @blog = Blog.find(params[:id])
   end
 
   def blog_params
     params.require(:blog).permit(:title, :body, :author)
+  end
+
+  def move_root(notice_message)
+    redirect_to blogs_path, { notice: notice_message }
   end
 end

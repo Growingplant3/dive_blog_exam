@@ -20,6 +20,6 @@
 </div>
 
 <button><%= link_to "編集する", edit_blog_path(@blog.id) %></button>
-<button>削除する</button>
+<button><%= link_to "削除する", blog_path(@blog.id), method: :delete, data: {confirm: "本当に削除しますか？"} %></button>
 <br>
 <%= link_to "一覧表示に戻る", blogs_path %>
