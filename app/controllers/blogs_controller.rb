@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: %i[show edit destroy]
+  before_action :set_blog, only: %i[show edit update destroy]
 
   def index
     @blogs = Blog.pluck(:id, :title, :updated_at)
@@ -30,8 +30,8 @@ class BlogsController < ApplicationController
   end
 
   def update
-    @blog = Blog.new(blog_params)
-    if @blog.valid?
+    @edit_blog = Blog.new(blog_params)
+    if @edit_blog.valid?
       @blog.update(blog_params)
       move_root("ブログ記事を編集しました。")
     else

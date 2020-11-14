@@ -9,6 +9,17 @@
   </div>
 <% end %>
 
+<% if @edit_blog && @edit_blog.errors.any? %>
+  <div class="blog-form">
+    <h2><%= @edit_blog.errors.count %>件のエラーがあります。</h2>
+    <ul>
+      <% @edit_blog.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_with(model: @blog, local: true, url: choice_root) do |f| %>
   <div class="blog-form">
     <ul>
