@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
   before_action :set_blog, only: %i[show edit update destroy]
 
   def index
-    @blogs = Blog.pluck(:id, :title, :updated_at)
+    @blogs = Blog.all
   end
 
   def new
