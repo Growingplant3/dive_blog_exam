@@ -14,8 +14,7 @@ class BlogsController < ApplicationController
     if params[:back]
       render :new
     else
-      if @blog.valid?
-        @blog.save
+      if @blog.save
         move_root("ブログ記事を登録しました。")
       else
         render :new
