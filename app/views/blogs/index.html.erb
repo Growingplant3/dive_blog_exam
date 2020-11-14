@@ -5,7 +5,7 @@
     <div class="blog-form">
       <ul>
         <li>タイトル</li>
-        <h2><%= link_to "#{blog.title}", blog_path(blog.id) %></h2>
+        <h2><%= link_to "#{blog.title}", blog_path(blog) %></h2>
         <li>更新日</li>
         <li><%= "#{blog.updated_at}" %></li>
       </ul>
