@@ -29,9 +29,7 @@ class BlogsController < ApplicationController
   end
 
   def update
-    @edit_blog = Blog.new(blog_params)
-    if @edit_blog.valid?
-      @blog.update(blog_params)
+    if @blog.update(blog_params)
       move_root("ブログ記事を編集しました。")
     else
       render :edit
